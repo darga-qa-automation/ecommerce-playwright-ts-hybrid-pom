@@ -1,0 +1,38 @@
+
+{
+  "compilerOptions": {
+    "target": "ES2022",     // target: sets the JavaScript language version TypeScript targets.
+    "module": "Node16",   // module: configures CommonJS module output conventions.
+    "moduleResolution": "Node16", // determines how TypeScript resolves imports.
+    "strict": true,         // strict: enables stricter type checking to catch more mistakes.
+    "esModuleInterop": true, // improves interoperability with CommonJS modules.
+    "resolveJsonModule": true,  // allows TypeScript to understand imports of JSON files, such as loginData.json.
+    "skipLibCheck": true,  // skips checking declaration files from dependencies.
+    "noEmit": true         //  tells TypeScript to check the code without generating JavaScript files.
+  }, 
+  "include": [      // include: identifies the TypeScript files we want the compiler to check.
+    "pages/**/*.ts",
+    "fixtures/**/*.ts",
+    "tests/**/*.ts"
+  ]
+}
+
+
+/*
+Understand the important settings
+- target: sets the JavaScript language version TypeScript targets.
+- module: configures CommonJS module output conventions.
+- moduleResolution: determines how TypeScript resolves imports.
+- strict: enables stricter type checking to catch more mistakes.
+- esModuleInterop: improves interoperability with CommonJS modules.
+- resolveJsonModule: allows TypeScript to understand imports of JSON files, such as loginData.json.
+- skipLibCheck: skips checking declaration files from dependencies.
+- noEmit: tells TypeScript to check the code without generating JavaScript files.
+- include: identifies the TypeScript files we want the compiler to check.
+noEmit is particularly useful here: Playwright runs our tests, while TypeScript can independently check whether our code is type-safe.
+
+
+ "moduleResolution": "Node16" and "module": "Node16"
+These two settings should be compatible with each other. Keep the other compiler options unchanged for now.
+
+*/

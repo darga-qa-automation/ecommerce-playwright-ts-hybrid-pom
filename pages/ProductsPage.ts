@@ -1,3 +1,4 @@
+
 import { type Locator, type Page } from '@playwright/test';
 
 export class ProductsPage {
@@ -23,7 +24,21 @@ export class ProductsPage {
     await this.backpackAddToCartButton.click();
   }
 
+  async addProductToCart(productName: string): Promise<void> {
+    const product = this.page.locator('.inventory_item').filter({ hasText: productName });
+
+    await product.getByRole('button', { name: 'Add to cart' }).click();
+  }
+
   async openShoppingCart(): Promise<void> {
     await this.shoppingCartLink.click();
+  }
+
+  async getProductCount(): Promise<number> {
+    return await this.productNames.count();
+  }
+
+  async getProductNames(): Promise<string[]> {
+    return await this.productNames.allTextContents();
   }
 }
